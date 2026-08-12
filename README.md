@@ -61,7 +61,7 @@ Then open `/plugins`, select the `signal-yield` marketplace, install `esquisse-k
 ## Examples
 
 ```text
-明日エスキスです。この課題文と図面をレビューしてください。
+この設計条件と図面をレビューしてください。
 ```
 
 ```text

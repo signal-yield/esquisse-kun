@@ -28,7 +28,7 @@ The package is skills-only:
 
 ### Positive Test 1
 
-Prompt: `明日エスキスです。この課題文と図面をレビューしてください。`
+Prompt: `この設計条件と図面をレビューしてください。`
 
 Fixture: `tests/fixtures/T1`
 
@@ -52,7 +52,7 @@ Expected: BCR/FAR and evacuation notes marked confirmed/needs-check/unjudgeable.
 
 ### Positive Test 4
 
-Prompt: `小規模公共建築の配置図と平面図です。先生に見せる前に確認して。`
+Prompt: `小規模公共建築の配置図と平面図です。レビュー前に確認して。`
 
 Fixture: `tests/fixtures/T4`
 

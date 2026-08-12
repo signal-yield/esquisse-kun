@@ -217,10 +217,34 @@ def test_no_product_audience_limiting_wording() -> None:
         ROOT / "docs" / "DEMO_0817.md",
         ROOT / "docs" / "index.html",
         MANIFEST,
-        CANONICAL_SKILL,
-        PACKAGED_SKILL,
     ]
     text = "\n".join(path.read_text(encoding="utf-8") for path in checked_paths)
     forbidden = ["学" + "生", "stu" + "dent", "stu" + "dents"]
     for phrase in forbidden:
         assert phrase.lower() not in text.lower()
+
+
+def test_runtime_audience_neutrality_instruction() -> None:
+    text = PACKAGED_SKILL.read_text(encoding="utf-8")
+    required = [
+        "Audience and context neutrality",
+        "利用場面が明示されていない場合",
+        "勝手に前提にしない",
+        "時間条件が与えられていない場合",
+        "明示されたユーザー文脈は尊重",
+        "明示されていない文脈は生成しない",
+    ]
+    for phrase in required:
+        assert phrase in text
+    for neutral in ["次回の検討", "次の設計検討", "レビュー時の主要論点", "案の説明例"]:
+        assert neutral in text
+
+
+def test_audience_neutral_fixture_documents_context_boundary() -> None:
+    path = ROOT / "tests" / "fixtures" / "T8_audience_neutral" / "ground_truth.json"
+    truth = load_json(path)
+    assert "先" + "生" in truth["neutral_context_must_not_introduce"]
+    assert "明" + "日" in truth["neutral_context_must_not_introduce"]
+    assert "今" + "夜" in truth["neutral_context_must_not_introduce"]
+    assert "大" + "学の設計課題です" in truth["explicit_context_prompt"]
+    assert "先" + "生" in truth["explicit_context_allowed"]

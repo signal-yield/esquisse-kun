@@ -1,0 +1,25 @@
+{
+  "neutral_prompt": "A案とB案を比較して。次のエスキスに持っていくならどちらかまで教えて。",
+  "neutral_context_must_not_introduce": [
+    "先生",
+    "教授",
+    "授業",
+    "学校",
+    "大学",
+    "提出",
+    "明日",
+    "今夜"
+  ],
+  "neutral_replacements": [
+    "次に直す3点",
+    "次の設計検討",
+    "レビュー時の主要論点",
+    "案の説明例"
+  ],
+  "explicit_context_prompt": "大学の設計課題です。明日先生にエスキスを見せます。A案とB案を比較してください。",
+  "explicit_context_allowed": [
+    "課題",
+    "明日",
+    "先生"
+  ]
+}
