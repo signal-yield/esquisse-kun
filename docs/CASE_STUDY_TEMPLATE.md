@@ -1,6 +1,8 @@
 # ケーススタディ雛形
 
-[English](CASE_STUDY_TEMPLATE.en.md)
+[日本語](CASE_STUDY_TEMPLATE.md) | [English](CASE_STUDY_TEMPLATE.en.md)
+
+## 日本語
 
 ## Case ID
 

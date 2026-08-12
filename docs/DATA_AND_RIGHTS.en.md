@@ -1,6 +1,8 @@
 # Data, Rights, and Redistribution Rules
 
-[日本語](DATA_AND_RIGHTS.md)
+[日本語](DATA_AND_RIGHTS.md) | [English](DATA_AND_RIGHTS.en.md)
+
+## English
 
 ## Principle
 

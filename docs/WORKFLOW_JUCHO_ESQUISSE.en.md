@@ -1,6 +1,8 @@
 # Jucho-kun x Esquisse-kun Workflow
 
-[日本語](WORKFLOW_JUCHO_ESQUISSE.md)
+[日本語](WORKFLOW_JUCHO_ESQUISSE.md) | [English](WORKFLOW_JUCHO_ESQUISSE.en.md)
+
+## English
 
 ## Purpose
 

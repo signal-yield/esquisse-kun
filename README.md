@@ -8,7 +8,7 @@
 
 エスキスクンは、建築設計案の条件、図面、空間構成、動線、光、視線、断面、建築法規の見落とし候補を、ホワイトボックスに整理するskills-only pluginです。読めない値を作らず、明示値・読取値・推定値・不明値を分けて扱います。
 
-### Status
+### ステータス
 
 | Branch | Status |
 |---|---|
@@ -127,17 +127,17 @@ Peter Zumthorの設計原理を参照してA案とB案を比較してくださ�
 - [ケーススタディ雛形](docs/CASE_STUDY_TEMPLATE.md)
 - [v0.2 package manifest](docs/V02_PACKAGE_MANIFEST.md)
 
-### Disclaimer
+### 免責事項
 
 本pluginは設計学習・設計検討のための一次レビュー支援です。最終的な法規判断、設計判断、著作権・利用許諾判断は、最新の公式原典、自治体資料、建築士、確認検査機関、権利者等により確認してください。
 
-### Author
+### 作者
 
 Signal Yield Advisory / Koichi Matsuda<br>
 signalYield@gmail.com<br>
 https://signal-yield.github.io/esquisse-kun/
 
-### License
+### ライセンス
 
 MIT
 

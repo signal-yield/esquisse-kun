@@ -1,6 +1,8 @@
 # データ・著作権・再配布ルール
 
-[English](DATA_AND_RIGHTS.en.md)
+[日本語](DATA_AND_RIGHTS.md) | [English](DATA_AND_RIGHTS.en.md)
+
+## 日本語
 
 ## 基本方針
 

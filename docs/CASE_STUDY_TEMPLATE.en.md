@@ -1,6 +1,8 @@
 # Case Study Template
 
-[日本語](CASE_STUDY_TEMPLATE.md)
+[日本語](CASE_STUDY_TEMPLATE.md) | [English](CASE_STUDY_TEMPLATE.en.md)
+
+## English
 
 ## Case ID
 

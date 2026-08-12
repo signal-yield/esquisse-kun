@@ -1,6 +1,8 @@
 # 重調クン x エスキスクン連携手順
 
-[English](WORKFLOW_JUCHO_ESQUISSE.en.md)
+[日本語](WORKFLOW_JUCHO_ESQUISSE.md) | [English](WORKFLOW_JUCHO_ESQUISSE.en.md)
+
+## 日本語
 
 ## 目的
 
