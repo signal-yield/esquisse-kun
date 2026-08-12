@@ -1,6 +1,6 @@
 # エスキスクン / Esquisse-kun
 
-**Esquisse-kun — AI Architecture Design Review** is a skills-only plugin for architecture students. It reviews studio assignments and drawings as an early esquisse partner, then highlights the next concrete moves before a critique.
+**Esquisse-kun — AI Architecture Design Review** is a skills-only plugin for preliminary architectural design review. It reviews studio assignments and drawings as an early esquisse partner, then highlights the next concrete moves before a critique.
 
 ## What It Does
 
@@ -8,10 +8,28 @@
 - Separates values into explicit, readable, estimated, and unknown so it does not invent drawing facts.
 - Screens building-code issues as a learning-oriented first pass: FAR, BCR, roads, setbacks, fire districts, height limits, daylight, evacuation notes, slant-plane controls, and shadow regulation.
 - Supports Reference Architect Mode. v0.1 includes a curated Vincent Van Duysen reference card and can also organize other architects through design principles.
+- Compares A/B design options for the same assignment with qualitative, evidence-based recommendations.
 
 ## Who It's For
 
-Architecture students preparing for studio desk crits, esquisses, and review sessions.
+People working on architectural design proposals, studio assignments, early plans, and esquisse reviews.
+
+## A/B Design Comparison
+
+Use Esquisse-kun to compare two options for the same assignment:
+
+```text
+A案とB案を比較して、
+次のエスキスへどちらを持っていくべきかレビューしてください。
+```
+
+The comparison mode:
+
+- Checks whether the design conditions are comparable
+- Uses qualitative comparison with drawing-based reasons
+- Compares first-pass building-code risks without final legality claims
+- Extracts one element worth keeping from the other option
+- Ends with three concrete next revision actions
 
 ## Install
 

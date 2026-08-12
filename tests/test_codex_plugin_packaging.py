@@ -21,7 +21,7 @@ def load_json(path: Path) -> dict:
 def test_manifest_and_skill_package() -> None:
     manifest = load_json(MANIFEST)
     assert manifest["name"] == "esquisse-kun"
-    assert manifest["version"] == "0.1.0-alpha.1"
+    assert manifest["version"] == "0.2.0-alpha.1"
     assert manifest["skills"] == "./skills/"
     assert manifest["license"] == "MIT"
     assert manifest["repository"] == "https://github.com/signal-yield/esquisse-kun"
@@ -80,6 +80,12 @@ def test_fixtures_exist() -> None:
         truth = load_json(base / "ground_truth.json")
         assert "room_names" in truth
         assert "deliberately_unknown_fields" in truth
+    compare = ROOT / "tests" / "fixtures" / "T6_compare"
+    for name in ("assignment.md", "plan_A.pdf", "plan_B.pdf", "ground_truth.json"):
+        assert (compare / name).is_file()
+    truth = load_json(compare / "ground_truth.json")
+    assert truth["same_assignment"] is True
+    assert "100-point scores" in truth["must_not_infer"]
 
 
 def test_guardrails_visible() -> None:
@@ -94,6 +100,10 @@ def test_guardrails_visible() -> None:
         "日影規制",
         "適法",
         "次に直す3点",
+        "A/B案比較モード",
+        "A案 / B案 エスキス比較",
+        "まだ決めない",
+        "100点満点の自動採点は禁止",
     ]
     for phrase in required:
         assert phrase in text
@@ -104,3 +114,34 @@ def test_submission_materials() -> None:
     assert text.count("### Positive Test ") == 5
     assert text.count("### Negative Test ") == 3
     assert "Submit Stop Point" in text
+
+
+def test_ab_compare_negative_cases_documented() -> None:
+    path = ROOT / "tests" / "fixtures" / "T6_compare" / "negative_cases.json"
+    cases = json.loads(path.read_text(encoding="utf-8"))
+    assert len(cases) >= 4
+    expected_ids = {
+        "N1_missing_b",
+        "N2_different_premises",
+        "N3_low_resolution_b",
+        "N4_no_rubric_score_request",
+    }
+    assert expected_ids.issubset({case["id"] for case in cases})
+    text = "\n".join(case["expected"] for case in cases)
+    for phrase in ["Do not invent", "premises differ", "lower information quantity", "100-point scores"]:
+        assert phrase in text
+
+
+def test_no_product_audience_limiting_wording() -> None:
+    checked_paths = [
+        ROOT / "README.md",
+        ROOT / "docs" / "DEMO_0817.md",
+        ROOT / "docs" / "index.html",
+        MANIFEST,
+        CANONICAL_SKILL,
+        PACKAGED_SKILL,
+    ]
+    text = "\n".join(path.read_text(encoding="utf-8") for path in checked_paths)
+    forbidden = ["学" + "生", "stu" + "dent", "stu" + "dents"]
+    for phrase in forbidden:
+        assert phrase.lower() not in text.lower()

@@ -1,6 +1,6 @@
 # Vincent Van Duysen Reference Card
 
-Use this card only when the user requests Vincent Van Duysen, Van Duysen, or ヴァン・デュイセン as a reference architect. Do not say "Van Duysen would design it this way." Translate observed principles into questions and drawing operations for the student's own proposal.
+Use this card only when the user requests Vincent Van Duysen, Van Duysen, or ヴァン・デュイセン as a reference architect. Do not say "Van Duysen would design it this way." Translate observed principles into questions and drawing operations for the user's own proposal.
 
 Sources checked: official Vincent Van Duysen Architects lecture/press page, Interior Design interview "10 Questions With... Vincent Van Duysen" (May 23, 2017), and Designboom interview page. Checked on 2026-08-12. The official page was reachable in search results but intermittently timed out during fetch; avoid claims that depend only on inaccessible text.
 

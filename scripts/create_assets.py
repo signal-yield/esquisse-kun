@@ -67,6 +67,70 @@ def main() -> None:
             d.line((120, 120, 900, 590), fill="gray", width=9)
             d.text((700, 40), "north? dim?", fill="gray")
         img.save(pdf, "PDF", resolution=100.0)
+    compare_base = ROOT / "tests" / "fixtures" / "T6_compare"
+    compare_base.mkdir(parents=True, exist_ok=True)
+    (compare_base / "assignment.md").write_text(
+        "# T6 A/B Courtyard Studio\n\n"
+        "Synthetic same-assignment comparison fixture for Esquisse-kun v0.2.\n\n"
+        "- Use: small courtyard studio and residence\n"
+        "- Site area: 220 sqm\n"
+        "- Target floor area: 135 sqm\n"
+        "- Road width: 5.0m south road\n"
+        "- Concept: compare a clear circulation option with a richer courtyard/light option.\n",
+        encoding="utf-8",
+    )
+    (compare_base / "ground_truth.json").write_text(
+        json.dumps(
+            {
+                "same_assignment": True,
+                "plan_a_strengths": ["clear entrance-to-main-room circulation", "rational zoning", "direct courtyard sightline"],
+                "plan_a_weaknesses": ["courtyard sequence is direct", "average daylight variation"],
+                "plan_b_strengths": ["richer indoor-outdoor sequence", "stronger south daylight", "varied courtyard sightline"],
+                "plan_b_weaknesses": ["longer circulation", "service route may cross main sequence"],
+                "expected_comparison_topics": ["circulation", "courtyard", "light", "sightline", "first-pass code risk"],
+                "unknown_values": ["building height", "true north confirmation", "boundary distances"],
+                "must_not_infer": ["final legality", "slant-plane compliance", "shadow regulation compliance", "100-point scores"],
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    for suffix, title, direct, south_light in [
+        ("A", "Option A clear circulation", True, False),
+        ("B", "Option B layered courtyard", False, True),
+    ]:
+        img = Image.new("RGB", (1000, 700), "white")
+        d = ImageDraw.Draw(img)
+        d.text((100, 40), f"T6 plan_{suffix} {title}", fill="black")
+        d.rectangle((80, 80, 920, 620), outline="black", width=4)
+        d.line((80, 620, 920, 620), fill="#555555", width=8)
+        d.text((430, 640), "south road 5.0m", fill="black")
+        d.rectangle((380, 240, 620, 460), outline="#2F7D57", width=5)
+        d.text((430, 330), "courtyard", fill="#2F7D57")
+        if direct:
+            d.rectangle((150, 160, 360, 360), outline="black", width=3)
+            d.rectangle((640, 160, 850, 360), outline="black", width=3)
+            d.line((500, 620, 500, 460), fill="#D9B45F", width=10)
+            d.line((500, 460, 500, 240), fill="#D9B45F", width=10)
+            d.text((180, 200), "studio", fill="black")
+            d.text((670, 200), "living", fill="black")
+            d.text((520, 520), "clear route", fill="#A77A32")
+        else:
+            d.rectangle((150, 140, 350, 310), outline="black", width=3)
+            d.rectangle((660, 140, 850, 310), outline="black", width=3)
+            d.rectangle((170, 440, 430, 570), outline="black", width=3)
+            d.line((500, 620, 300, 500), fill="#D9B45F", width=10)
+            d.line((300, 500, 380, 350), fill="#D9B45F", width=10)
+            d.line((620, 460, 800, 560), fill="#D9B45F", width=10)
+            d.text((180, 180), "atelier", fill="black")
+            d.text((690, 180), "living", fill="black")
+            d.text((200, 480), "bedroom", fill="black")
+            d.text((625, 520), "layered views", fill="#A77A32")
+        if south_light:
+            d.rectangle((465, 600, 760, 620), fill="#F2D46B")
+            d.text((650, 590), "south light", fill="#A77A32")
+        img.save(compare_base / f"plan_{suffix}.pdf", "PDF", resolution=100.0)
 
 
 if __name__ == "__main__":
