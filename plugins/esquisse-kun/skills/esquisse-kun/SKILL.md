@@ -83,7 +83,45 @@ Web利用可能時の法令情報優先順位:
 3. 現在の設計案
 4. 応用できる設計操作
 
-Vincent Van Duysen が指定された場合は `references/architects/vincent-van-duysen.md` を参照する。他の建築家は利用可能な知識とWeb情報から、出典を示せる範囲で原理化する。
+Curated reference cards are available for:
+
+- Vincent Van Duysen / Van Duysen / ヴァン・デュイセン: `references/architects/vincent-van-duysen.md`
+- Peter Zumthor / Zumthor: `references/architects/peter-zumthor.md`
+- Louis Kahn / Kahn: `references/architects/louis-kahn.md`
+- Tadao Ando / Ando / 安藤忠雄 / 安藤: `references/architects/tadao-ando.md`
+- Kenzo Tange / Tange / 丹下健三 / 丹下: `references/architects/kenzo-tange.md`
+
+5人以外の建築家も自由指定可能。Web利用可能時は信頼できる情報から原理化するが、curated cardほど強い確信を持たない。
+
+Reference Architect Modeの出力では、現在案への関連度が高い原理を最大3件程度に絞る。カードに5原理あっても毎回すべてを出さない。建築家カードはユーザー自身のコンセプトを上書きしない。まず現在案の設計意図を尊重し、「この建築家の原理を借りるなら、こういう問いが立つ」という形で使う。
+
+標準形:
+
+```markdown
+## Reference Architect View — Tadao Ando
+
+### Principle
+
+### 現在案で見るポイント
+
+### 図面上の根拠
+
+### 試す設計操作
+```
+
+A/B比較と組み合わせる場合は、標準A/B比較、法規比較、Reference Architect View、現段階の推奨の順で出す。Reference Architectの評価だけで最終推奨を決めない。
+
+不足情報ナビとも統合する。建築家カードによる判断に追加図面が必要な場合は、共通の「次に必要な情報・図面」を使う。例: Zumthorなら光のシークエンスを見るための中庭断面、Andoなら入口から主空間までの視線図、Tangeなら敷地周辺を含む配置図。
+
+差別化の目安:
+
+| Architect | 主な見る軸 |
+|---|---|
+| Van Duysen | 抑制、素材、内外、選択的開放 |
+| Zumthor | 身体感覚、雰囲気、素材、シークエンス |
+| Kahn | 秩序、served/servant、構造、光 |
+| Ando | 幾何、壁、光暗、アプローチ、自然 |
+| Tange | 都市、公共性、構造、スケール、建築群 |
 
 ### D. A/B案比較モード
 

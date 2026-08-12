@@ -148,6 +148,57 @@ def test_missing_information_navigator_guardrails() -> None:
         assert phrase in text
 
 
+def test_curated_architect_cards_exist_and_are_structured() -> None:
+    architects = {
+        "vincent-van-duysen.md": ["Spatial Clarity", "Selective Openness"],
+        "peter-zumthor.md": ["Atmosphere", "Material Presence", "Choreographed Thresholds"],
+        "louis-kahn.md": ["Served And Servant", "Order", "Structure"],
+        "tadao-ando.md": ["Geometry", "Wall As Spatial Device", "Nature"],
+        "kenzo-tange.md": ["Urban Scale", "Structural Expression", "Civic Space"],
+    }
+    base = PLUGIN / "skills" / "esquisse-kun" / "references" / "architects"
+    for filename, distinctive_terms in architects.items():
+        text = (base / filename).read_text(encoding="utf-8")
+        assert "Sources checked:" in text
+        assert "Checked on 2026-08-12" in text
+        assert text.count("## Principle:") >= 4
+        for heading in ["### Observation", "### Design question", "### Drawing check", "### Possible operation", "### Sources"]:
+            assert heading in text
+        for term in distinctive_terms:
+            assert term in text
+        for forbidden in ["ならこう設計する", "ならこの案を選ぶ", "風に重厚", "木を使う", "ベージュにする"]:
+            assert forbidden not in text
+
+
+def test_reference_architect_mode_triggers_and_integrations() -> None:
+    text = PACKAGED_SKILL.read_text(encoding="utf-8")
+    for trigger in [
+        "Vincent Van Duysen",
+        "Peter Zumthor",
+        "Louis Kahn",
+        "Tadao Ando",
+        "安藤忠雄",
+        "Kenzo Tange",
+        "丹下健三",
+    ]:
+        assert trigger in text
+    for filename in [
+        "vincent-van-duysen.md",
+        "peter-zumthor.md",
+        "louis-kahn.md",
+        "tadao-ando.md",
+        "kenzo-tange.md",
+    ]:
+        assert filename in text
+    for required in [
+        "最大3件",
+        "Reference Architectの評価だけで最終推奨を決めない",
+        "次に必要な情報・図面",
+        "差別化の目安",
+    ]:
+        assert required in text
+
+
 def test_t7_missing_info_fixtures_exist() -> None:
     base = ROOT / "tests" / "fixtures" / "T7_missing_info"
     truth = load_json(base / "ground_truth.json")

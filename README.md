@@ -7,7 +7,7 @@
 - Reviews assignment requirements, plans, site plans, sections, elevations, diagrams, perspectives, and model photos when the host model can read them.
 - Separates values into explicit, readable, estimated, and unknown so it does not invent drawing facts.
 - Screens building-code issues as a learning-oriented first pass: FAR, BCR, roads, setbacks, fire districts, height limits, daylight, evacuation notes, slant-plane controls, and shadow regulation.
-- Supports Reference Architect Mode. v0.1 includes a curated Vincent Van Duysen reference card and can also organize other architects through design principles.
+- Supports Reference Architect Mode. v0.2 includes curated reference cards for Vincent Van Duysen, Peter Zumthor, Louis Kahn, Tadao Ando / 安藤忠雄, and Kenzo Tange / 丹下健三.
 - Compares A/B design options for the same assignment with qualitative, evidence-based recommendations.
 - Guides missing information: what is missing, where to add it, and what can be judged after adding it.
 
@@ -43,6 +43,10 @@ Example:
 判定できないところがあれば、
 次にどの図面に何を書き足せばいいかまで教えて。
 ```
+
+## Reference Architect Mode
+
+Reference Architect Modeでは、好きな建築家の作品を表層的に模倣するのではなく、設計原理を現在案へ応用します。v0.2ではVincent Van Duysen、Peter Zumthor、Louis Kahn、安藤忠雄、丹下健三のcurated reference cardを収録しています。
 
 ## Install
 
