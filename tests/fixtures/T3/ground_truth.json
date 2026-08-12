@@ -1,0 +1,21 @@
+{
+  "use": "small apartment",
+  "room_names": [
+    "unit A",
+    "unit B",
+    "common stair",
+    "bicycle"
+  ],
+  "dimensions": [
+    "3 units"
+  ],
+  "orientation": "east road",
+  "floor_area": "240 sqm",
+  "site_area": "160 sqm",
+  "road_width": "6.0m",
+  "deliberately_unknown_fields": [
+    "corridor width",
+    "stair riser"
+  ],
+  "title": "Small Apartment"
+}

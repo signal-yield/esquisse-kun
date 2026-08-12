@@ -1,0 +1,20 @@
+{
+  "use": "single-family house",
+  "room_names": [
+    "living",
+    "kitchen",
+    "bedroom",
+    "bath"
+  ],
+  "dimensions": [
+    "6.0m grid"
+  ],
+  "orientation": "north up",
+  "floor_area": "118 sqm",
+  "site_area": "180 sqm",
+  "road_width": "4.0m",
+  "deliberately_unknown_fields": [
+    "highest height"
+  ],
+  "title": "Detached House"
+}

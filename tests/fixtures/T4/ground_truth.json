@@ -1,0 +1,21 @@
+{
+  "use": "community library",
+  "room_names": [
+    "reading room",
+    "workshop",
+    "office",
+    "storage"
+  ],
+  "dimensions": [
+    "two floors"
+  ],
+  "orientation": "north up",
+  "floor_area": "310 sqm",
+  "site_area": "420 sqm",
+  "road_width": "8.0m",
+  "deliberately_unknown_fields": [
+    "fire district",
+    "district plan"
+  ],
+  "title": "Small Public Building"
+}

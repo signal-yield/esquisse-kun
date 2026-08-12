@@ -1,0 +1,20 @@
+{
+  "use": "courtyard house",
+  "room_names": [
+    "living",
+    "atelier",
+    "bedroom",
+    "courtyard"
+  ],
+  "dimensions": [
+    "courtyard 4.0m x 5.0m"
+  ],
+  "orientation": "north up",
+  "floor_area": "132 sqm",
+  "site_area": "210 sqm",
+  "road_width": "5.5m",
+  "deliberately_unknown_fields": [
+    "north setback"
+  ],
+  "title": "Courtyard House"
+}

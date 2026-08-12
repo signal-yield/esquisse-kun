@@ -1,0 +1,44 @@
+{
+  "name": "esquisse-kun",
+  "version": "0.1.0-alpha.1",
+  "description": "A skills-only plugin for preliminary architecture design review for students.",
+  "author": {
+    "name": "Signal Yield Advisory / Koichi Matsuda",
+    "email": "signalYield@gmail.com",
+    "url": "https://signal-yield.github.io/esquisse-kun/"
+  },
+  "homepage": "https://signal-yield.github.io/esquisse-kun/",
+  "repository": "https://github.com/signal-yield/esquisse-kun",
+  "license": "MIT",
+  "keywords": [
+    "architecture",
+    "design-review",
+    "education",
+    "building-code",
+    "esquisse"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "エスキスクン",
+    "shortDescription": "建築学生のエスキス一次レビュー",
+    "longDescription": "エスキスクンは、建築学生の設計課題を、課題条件、空間構成、動線、視線、光、断面、コンセプト整合、建築法規の観点から一次レビューするMITライセンスのスキル専用プラグインです。図面・課題文から読み取った情報を明示値、読取値、推定値、不明値に分け、法規レビューでは推定値を適否判断の根拠に使いません。建築法規レビューは建築確認や最終適法判断ではなく、設計初期段階の見落とし発見と追加確認事項の整理を目的とします。Vincent Van Duysenのcurated reference cardを含み、任意の参考建築家について表層的な作風模倣ではなく設計原理からレビューします。",
+    "developerName": "Signal Yield Advisory / Koichi Matsuda",
+    "category": "Education",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://signal-yield.github.io/esquisse-kun/",
+    "privacyPolicyURL": "https://signal-yield.github.io/esquisse-kun/privacy.html",
+    "termsOfServiceURL": "https://signal-yield.github.io/esquisse-kun/terms.html",
+    "defaultPrompt": [
+      "明日エスキスです。この課題文と図面をレビューしてください。",
+      "Vincent Van Duysenの設計原理を参考にレビューして。",
+      "建築法規も一次チェックしてください。日影規制と斜線制限も見てください。"
+    ],
+    "brandColor": "#23443E",
+    "composerIcon": "./assets/esquisse-kun-icon.png",
+    "logo": "./assets/esquisse-kun-logo.png"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "use": "ambiguous studio project",
+  "room_names": [
+    "illegible room labels"
+  ],
+  "dimensions": [],
+  "orientation": null,
+  "floor_area": null,
+  "site_area": null,
+  "road_width": null,
+  "deliberately_unknown_fields": [
+    "true north",
+    "site area",
+    "floor area",
+    "road width",
+    "building height",
+    "boundary distances"
+  ],
+  "title": "Low Quality Drawing"
+}
