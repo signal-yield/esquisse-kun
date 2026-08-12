@@ -21,7 +21,7 @@ def load_json(path: Path) -> dict:
 def test_manifest_and_skill_package() -> None:
     manifest = load_json(MANIFEST)
     assert manifest["name"] == "esquisse-kun"
-    assert manifest["version"] == "0.2.0-alpha.1"
+    assert manifest["version"] == "0.2.0-alpha.2"
     assert manifest["skills"] == "./skills/"
     assert manifest["license"] == "MIT"
     assert manifest["repository"] == "https://github.com/signal-yield/esquisse-kun"
