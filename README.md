@@ -9,6 +9,7 @@
 - Screens building-code issues as a learning-oriented first pass: FAR, BCR, roads, setbacks, fire districts, height limits, daylight, evacuation notes, slant-plane controls, and shadow regulation.
 - Supports Reference Architect Mode. v0.1 includes a curated Vincent Van Duysen reference card and can also organize other architects through design principles.
 - Compares A/B design options for the same assignment with qualitative, evidence-based recommendations.
+- Guides missing information: what is missing, where to add it, and what can be judged after adding it.
 
 ## Who It's For
 
@@ -30,6 +31,18 @@ The comparison mode:
 - Compares first-pass building-code risks without final legality claims
 - Extracts one element worth keeping from the other option
 - Ends with three concrete next revision actions
+
+## Missing Information Navigator
+
+図面や法規条件が不足している場合、「判定不能」で終わらず、何が足りないか、どの図面へ何を追加すべきか、追加後に何を判断できるかまで案内します。
+
+Example:
+
+```text
+この案の法規も見て。
+判定できないところがあれば、
+次にどの図面に何を書き足せばいいかまで教えて。
+```
 
 ## Install
 

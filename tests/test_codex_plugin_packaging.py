@@ -132,6 +132,34 @@ def test_ab_compare_negative_cases_documented() -> None:
         assert phrase in text
 
 
+def test_missing_information_navigator_guardrails() -> None:
+    text = PACKAGED_SKILL.read_text(encoding="utf-8")
+    required = [
+        "不足情報ナビ",
+        "次に必要な情報・図面",
+        "追加後に分かること",
+        "最大3件",
+        "必須",
+        "あると精度が上がる",
+        "資料不足を設計品質の低さとして扱わない",
+        "推定値や読めない値を補完して計算しない",
+    ]
+    for phrase in required:
+        assert phrase in text
+
+
+def test_t7_missing_info_fixtures_exist() -> None:
+    base = ROOT / "tests" / "fixtures" / "T7_missing_info"
+    truth = load_json(base / "ground_truth.json")
+    assert truth["max_basic_missing_items"] == 3
+    for phrase in ["必須", "追加後に分かること", "次に必要な情報・図面"]:
+        assert phrase in truth["required_phrases"]
+    for case in ("T7_1_single", "T7_2_code", "T7_3_ab"):
+        assert (base / case / "assignment.md").is_file()
+        assert (base / case / "plan.pdf").is_file()
+    assert "B案の中庭・LDK・個室を横断する断面図" in truth["patterns"]["T7_3_ab"]["expected_nav"]
+
+
 def test_no_product_audience_limiting_wording() -> None:
     checked_paths = [
         ROOT / "README.md",

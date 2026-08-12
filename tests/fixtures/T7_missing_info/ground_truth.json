@@ -1,0 +1,48 @@
+{
+  "patterns": {
+    "T7_1_single": {
+      "title": "Single option missing true north and section",
+      "missing": [
+        "true north",
+        "courtyard section"
+      ],
+      "expected_nav": [
+        "配置図へ真北矢印",
+        "中庭と主室を横断する断面図"
+      ]
+    },
+    "T7_2_code": {
+      "title": "Code review missing road width height north setback",
+      "missing": [
+        "road width",
+        "building height",
+        "north boundary distance"
+      ],
+      "expected_nav": [
+        "前面道路幅員",
+        "建物高さ",
+        "北側境界距離"
+      ]
+    },
+    "T7_3_ab": {
+      "title": "A/B comparison with missing B section",
+      "missing": [
+        "B option courtyard section"
+      ],
+      "expected_nav": [
+        "B案の中庭・LDK・個室を横断する断面図"
+      ]
+    }
+  },
+  "required_phrases": [
+    "必須",
+    "追加後に分かること",
+    "次に必要な情報・図面"
+  ],
+  "must_not": [
+    "資料不足を設計品質の低さとして扱う",
+    "適法",
+    "推定値を法規根拠にする"
+  ],
+  "max_basic_missing_items": 3
+}

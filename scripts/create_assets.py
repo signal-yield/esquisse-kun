@@ -131,6 +131,66 @@ def main() -> None:
             d.rectangle((465, 600, 760, 620), fill="#F2D46B")
             d.text((650, 590), "south light", fill="#A77A32")
         img.save(compare_base / f"plan_{suffix}.pdf", "PDF", resolution=100.0)
+    missing_base = ROOT / "tests" / "fixtures" / "T7_missing_info"
+    missing_base.mkdir(parents=True, exist_ok=True)
+    patterns = {
+        "T7_1_single": {
+            "title": "Single option missing true north and section",
+            "missing": ["true north", "courtyard section"],
+            "expected_nav": ["配置図へ真北矢印", "中庭と主室を横断する断面図"],
+        },
+        "T7_2_code": {
+            "title": "Code review missing road width height north setback",
+            "missing": ["road width", "building height", "north boundary distance"],
+            "expected_nav": ["前面道路幅員", "建物高さ", "北側境界距離"],
+        },
+        "T7_3_ab": {
+            "title": "A/B comparison with missing B section",
+            "missing": ["B option courtyard section"],
+            "expected_nav": ["B案の中庭・LDK・個室を横断する断面図"],
+        },
+    }
+    (missing_base / "ground_truth.json").write_text(
+        json.dumps(
+            {
+                "patterns": patterns,
+                "required_phrases": ["必須", "追加後に分かること", "次に必要な情報・図面"],
+                "must_not": ["資料不足を設計品質の低さとして扱う", "適法", "推定値を法規根拠にする"],
+                "max_basic_missing_items": 3,
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    for key, info in patterns.items():
+        case_dir = missing_base / key
+        case_dir.mkdir(parents=True, exist_ok=True)
+        (case_dir / "assignment.md").write_text(
+            f"# {info['title']}\n\n"
+            "Synthetic missing-information fixture for Esquisse-kun v0.2.\n\n"
+            "- Review should continue with available information.\n"
+            "- Missing information must be converted into concrete next drawings or notes.\n"
+            "- Do not infer unreadable legal values.\n",
+            encoding="utf-8",
+        )
+        img = Image.new("RGB", (1000, 700), "white")
+        d = ImageDraw.Draw(img)
+        d.text((90, 45), key + " " + info["title"], fill="black")
+        d.rectangle((90, 90, 910, 610), outline="black", width=4)
+        d.rectangle((180, 160, 460, 360), outline="black", width=3)
+        d.rectangle((520, 160, 820, 360), outline="black", width=3)
+        d.rectangle((380, 420, 620, 560), outline="#2F7D57", width=4)
+        d.text((220, 220), "main room", fill="black")
+        d.text((560, 220), "support", fill="black")
+        d.text((430, 480), "court", fill="#2F7D57")
+        if key == "T7_2_code":
+            d.text((110, 630), "road width ?", fill="gray")
+            d.text((730, 520), "height ?", fill="gray")
+            d.text((110, 110), "north setback ?", fill="gray")
+        if key == "T7_3_ab":
+            d.text((690, 570), "B: section missing", fill="gray")
+        img.save(case_dir / "plan.pdf", "PDF", resolution=100.0)
 
 
 if __name__ == "__main__":
