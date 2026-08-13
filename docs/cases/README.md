@@ -8,9 +8,9 @@
 
 ## ケース
 
-| ケース | 状態 | メモ |
-|---|---|---|
-| [001 千葉市新庁舎](001-chiba-city-hall/README.md) | PARTIAL | 公開スキル手順による一次実行。公式URLのみ |
+| ケース | Skill workflow | Case verification | メモ |
+|---|---|---|---|
+| [001 千葉市新庁舎](001-chiba-city-hall/README.md) | PASS | PARTIAL | 2026-08-13 ChatGPT Work Modeでのスキル連続起動はPASS。GIS・ハザード・所管確認は未実施。公式URLのみ |
 
 ## English
 
@@ -18,6 +18,6 @@ This directory records link-only case studies using public documents. Official P
 
 ## Cases
 
-| Case | Status | Notes |
-|---|---|---|
-| [001 Chiba City Hall](001-chiba-city-hall/README.md) | PARTIAL | Procedure-level run; official URLs only |
+| Case | Skill workflow | Case verification | Notes |
+|---|---|---|---|
+| [001 Chiba City Hall](001-chiba-city-hall/README.md) | PASS | PARTIAL | Sequential skill invocation in ChatGPT Work Mode on 2026-08-13 is PASS. GIS, hazard, and competent-office checks remain outstanding. Official URLs only |

@@ -2,6 +2,12 @@
 
 [日本語](#日本語) | [English](#english)
 
+![Version](https://img.shields.io/badge/version-v0.2%20alpha.2-blue)
+![Tests](https://img.shields.io/badge/tests-16%20passed-brightgreen)
+![Live workflow](https://img.shields.io/badge/live%20workflow-passed-brightgreen)
+![Case 001](https://img.shields.io/badge/case%20001-partial-yellow)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
 ## 日本語
 
 **図面を勝手に補完しない、建築設計の一次レビュー用AIプラグイン。**
@@ -14,6 +20,16 @@
 |---|---|
 | `main` | approved v0.1 |
 | `develop/v0.2` | release candidate `0.2.0-alpha.2` |
+
+検証範囲ごとの状態は次のとおりです。
+
+| 検証範囲 | 状態 | 意味 |
+|---|---|---|
+| 自動・スモークテスト | 16 passed | 既存テスト関数の結果 |
+| ChatGPT実機連携 | PASS | 重調クン→エスキスクンの連続起動 |
+| Case 001 | PARTIAL | GIS・ハザード・所管確認が未完了 |
+
+いずれのバッジ・ステータスも、機能が所定の安全ルールに従って動いたことを示すものであり、現在の法規適合性・安全性の確認を意味しません。
 
 ### できること
 
@@ -74,6 +90,36 @@ v0.2では以下のcurated reference cardを収録しています。
 AI同士の一致を正解とは扱いません。人が公式原典へ戻って確認できることを重視します。
 
 詳しくは [重調クン×エスキスクン連携手順](docs/WORKFLOW_JUCHO_ESQUISSE.md) を参照してください。
+
+#### 3分で分かるワークフロー
+
+```text
+1. /jucho-kun で行政調査項目を整理
+2. 人が公式GIS・原典を確認
+3. /エスキスクン で図面と行政条件を照合
+4. 人が最終判断
+```
+
+価値の源泉は「AI同士が一致したから正しい」ことではなく、それぞれの出力から公式原典へ戻って確認できることにあります。
+
+### 実機検証
+
+2026-08-13、ChatGPT Work Mode上の同一会話で `/jucho-kun` と `/エスキスクン` を連続起動する実機テストを実施しました。スキル連携（起動・引き継ぎ・4分類・法規3分類・不足情報ナビ）は **PASS** です。ただし、千葉市新庁舎を題材としたCase 001全体は、現在のGIS・ハザードマップの地点別確認と所管窓口・有資格者による最終確認が未完了のため、引き続き **PARTIAL** です。
+
+- [実機連携テスト記録](docs/LIVE_WORKFLOW_TEST_20260813.md)
+- [Case 001: 千葉市新庁舎](docs/cases/001-chiba-city-hall/README.md)
+- [Case 001 Test Protocol](docs/cases/001-chiba-city-hall/TEST_PROTOCOL.md)
+- [Case 001 Results](docs/cases/001-chiba-city-hall/RESULTS.md)
+
+### 出力例
+
+Case 001における出力の要約例です。PDF画像やスクリーンショットではなく、テキスト表として示します。これはCase 001の要約例であり、現在の法的判断ではありません。
+
+| 項目 | 状態 | 次の確認 |
+|---|---|---|
+| 用途地域 | 基本設計時点では確認 | 現在の公式GISで再確認 |
+| 接道・道路種別 | 要確認 | 道路種別・法定幅員・境界資料 |
+| 避難・防火区画 | 判定不能 | 避難計画図・防火区画図 |
 
 ### 公開図面を使ったケーススタディ
 
@@ -154,6 +200,16 @@ Esquisse-kun is a skills-only plugin for early architectural design review. It o
 | `main` | approved v0.1 |
 | `develop/v0.2` | release candidate `0.2.0-alpha.2` |
 
+Verification scope and status:
+
+| Verification scope | Status | Meaning |
+|---|---|---|
+| Automated smoke tests | 16 passed | Result of the existing test functions |
+| ChatGPT live workflow | PASS | Sequential invocation of Jucho-kun then Esquisse-kun |
+| Case 001 | PARTIAL | Current GIS, hazard, and competent-office checks remain outstanding |
+
+Every badge and status here indicates that a feature operated according to its defined safety rules. None of them indicate current legal compliance or safety.
+
 ### What It Does
 
 - Reviews design requirements and drawings as a preliminary review.
@@ -205,6 +261,36 @@ Administrative research with Jucho-kun
 Agreement between two AI outputs is not treated as proof. The value is that a human can return to official sources and verify assumptions.
 
 See [Jucho-kun x Esquisse-kun workflow](docs/WORKFLOW_JUCHO_ESQUISSE.en.md).
+
+#### Workflow in Three Minutes
+
+```text
+1. Use /jucho-kun to organize administrative research items
+2. A human verifies the official GIS and source documents
+3. Use /エスキスクン to cross-check drawings against administrative conditions
+4. A human makes the final decision
+```
+
+The value is not that two AI outputs agree with each other. It is that each output can be traced back to official sources for human verification.
+
+### Live Verification
+
+On 2026-08-13, a live test invoked `/jucho-kun` and `/エスキスクン` sequentially within the same ChatGPT Work Mode conversation. The skill workflow itself — invocation, handoff, the four information classes, three-way code classification, and the missing-information navigator — is **PASS**. Case 001, which uses the Chiba City Hall project as its subject, remains **PARTIAL**, because current parcel-level GIS and hazard-map verification and confirmation by the competent office and licensed professionals are still outstanding.
+
+- [Live Workflow Test Record](docs/LIVE_WORKFLOW_TEST_20260813.md)
+- [Case 001: Chiba City Hall](docs/cases/001-chiba-city-hall/README.md)
+- [Case 001 Test Protocol](docs/cases/001-chiba-city-hall/TEST_PROTOCOL.md)
+- [Case 001 Results](docs/cases/001-chiba-city-hall/RESULTS.md)
+
+### Example Output
+
+An example output summary from Case 001, shown as a text table rather than a PDF image or screenshot. This is a Case 001 summary example, not a current legal determination.
+
+| Item | Status | Next verification |
+|---|---|---|
+| Zoning | Confirmed for the basic-design stage | Re-verify against the current official GIS |
+| Road access and classification | Requires verification | Road classification, legal width, and boundary material |
+| Egress and fire compartments | Undetermined | Egress plan and fire-compartment plan |
 
 ### Public Drawing Case Studies
 

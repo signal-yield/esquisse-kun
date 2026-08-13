@@ -6,16 +6,16 @@
 
 **Status: PARTIAL**
 
-公開されている重調クンとエスキスクンのスキル手順に従い、千葉市の公式行政資料と基本設計図を使って一次レビューを実行した。行政情報と図面レビューの分離、4分類、不足情報ナビ、原典への参照は確認できた。
+公開されている重調クンとエスキスクンのスキル手順に従い、千葉市の公式行政資料と基本設計図を使って一次レビューを実行した。行政情報と図面レビューの分離、4分類、不足情報ナビ、原典への参照は確認できた。2026-08-13には、ChatGPT Work Mode上の同一会話で `/jucho-kun` と `/エスキスクン` を連続起動する実機テストも実施し、スキル連携は `PASS` している。詳細は[実機連携テスト記録](../../LIVE_WORKFLOW_TEST_20260813.md)を参照。
 
-ただし、ChatGPTのプラグインUIから両プラグインを呼び出した実機試験ではない。また、千葉市の公式GIS・ハザードマップで対象地を操作して得る最新の地点判定と、所管窓口確認は未実施である。このため `PASS` ではなく `PARTIAL` とする。
+ただし、千葉市の公式GIS・ハザードマップで対象地を操作して得る最新の地点判定と、所管窓口・有資格者による最終確認は未実施である。このため、スキル連携は `PASS` だが、千葉市新庁舎という個別案件（Case 001）全体は `PASS` ではなく `PARTIAL` とする。
 
 ## 1. Run metadata
 
 | 項目 | 内容 |
 |---|---|
 | 実施日 | 2026-08-13 |
-| 実施方法 | OpenAI Codex上で公開スキル手順を手動実行 |
+| 実施方法 | OpenAI Codex上での公開スキル手順の手動実行に加え、ChatGPT Work Mode上の同一会話で `/jucho-kun` → `/エスキスクン` を連続起動する実機テストを実施 |
 | エスキスクン | `0.2.0-alpha.2`、対象repo SHA `ec5f783cc028cd0b1353be6d53c4f8010df1980c` |
 | 重調クン | `1.1.0`、参照repo SHA `d6580ca5e562812dc13401b0397f845bdaf657f0` |
 | 使用図面 | 基本設計図 PDF p.2 `A-01`、p.11 `A-10`、p.13 `A-12`、p.14 `A-13`、p.20 `A-19`、p.21 `A-20` |
@@ -164,7 +164,7 @@
 - [x] 基本設計時点と現在の行政条件を区別した
 - [x] 「適法」「安全」などの最終判断をしていない
 - [x] 図面PDF・画像・スクリーンショットをリポジトリへ掲載していない
-- [ ] ChatGPTのプラグインUIから重調クンとエスキスクンを連続起動した
+- [x] ChatGPT Work Modeで重調クンとエスキスクンを連続起動した
 - [ ] 公式GIS・ハザードマップで最新の対象地判定を人が完了した
 - [ ] 所管窓口・有資格者による最終確認を行った
 
@@ -182,7 +182,7 @@
 - [x] PARTIAL
 - [ ] FAIL
 
-`PARTIAL` の理由：公開スキル手順による行政調査と図面レビューは再現できたが、ChatGPTプラグインUIでの連続起動、最新GISの対象地操作、窓口確認が未実施であるため。
+`PARTIAL` の理由：公開スキル手順による行政調査と図面レビュー、およびChatGPT Work Modeでのスキル連続起動（実機連携テスト、`PASS`）は完了したが、最新GISの対象地操作と所管窓口・有資格者による最終確認が未実施であるため。
 
 ---
 
@@ -190,16 +190,16 @@
 
 **Status: PARTIAL**
 
-This run followed the public Jucho-kun and Esquisse-kun skill procedures and used only official Chiba City sources. It successfully separated administrative research from drawing review, applied the four information classes, and preserved traceability to the original documents.
+This run followed the public Jucho-kun and Esquisse-kun skill procedures and used only official Chiba City sources. It successfully separated administrative research from drawing review, applied the four information classes, and preserved traceability to the original documents. On 2026-08-13, a live test also invoked `/jucho-kun` and `/エスキスクン` sequentially within the same ChatGPT Work Mode conversation, and the skill workflow is `PASS`. See the [Live Workflow Test Record](../../LIVE_WORKFLOW_TEST_20260813.md) for details.
 
-It was not, however, an end-to-end invocation through the ChatGPT plugin UI. Current parcel-level results from the municipal GIS and hazard systems, as well as public-office confirmation, remain outstanding. The result is therefore `PARTIAL`, not `PASS`.
+Current parcel-level results from the municipal GIS and hazard systems, as well as confirmation by the competent office and licensed professionals, remain outstanding. The skill workflow is `PASS`, but Case 001 as a whole — the Chiba City Hall project specifically — remains `PARTIAL`, not `PASS`.
 
 ## 1. Run metadata
 
 | Item | Record |
 |---|---|
 | Run date | 2026-08-13 |
-| Method | Manual execution of the public skill procedures in OpenAI Codex |
+| Method | Manual execution of the public skill procedures in OpenAI Codex, plus a live test with `/jucho-kun` → `/エスキスクン` invoked sequentially within the same ChatGPT Work Mode conversation |
 | Esquisse-kun | `0.2.0-alpha.2`; target repository SHA `ec5f783cc028cd0b1353be6d53c4f8010df1980c` |
 | Jucho-kun | `1.1.0`; referenced repository SHA `d6580ca5e562812dc13401b0397f845bdaf657f0` |
 | Drawing sheets | PDF p.2 `A-01`, p.11 `A-10`, p.13 `A-12`, p.14 `A-13`, p.20 `A-19`, and p.21 `A-20` |
@@ -301,7 +301,7 @@ This is a preliminary design-screening result. Final compliance requires current
 - [x] Historical design inputs were separated from current administrative conditions
 - [x] No final claim of compliance or safety was made
 - [x] No drawing PDF, page image, screenshot, or tracing was committed
-- [ ] Both plugins were invoked sequentially through the ChatGPT plugin UI
+- [x] Jucho-kun and Esquisse-kun were invoked sequentially in ChatGPT Work Mode
 - [ ] Current parcel-level municipal GIS and hazard checks were completed by a human
 - [ ] Competent-office and licensed-professional confirmation was completed
 
@@ -312,4 +312,4 @@ This is a preliminary design-screening result. Final compliance requires current
 - [x] PARTIAL
 - [ ] FAIL
 
-Reason: the administrative and drawing-review procedures were reproduced, but the end-to-end ChatGPT plugin invocation, current parcel-level GIS operation, and public-office confirmation remain outstanding.
+Reason: the administrative and drawing-review procedures, and the sequential skill invocation in ChatGPT Work Mode (live workflow test, `PASS`), were reproduced, but current parcel-level GIS operation and public-office confirmation remain outstanding.

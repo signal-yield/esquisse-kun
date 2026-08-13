@@ -6,7 +6,7 @@
 
 ## 状態
 
-`PARTIAL` — 2026-08-13に公開スキル手順による一次実行を完了。ChatGPTプラグインUIでの連続起動と、最新GISの地点判定は未実施。
+`PARTIAL` — 2026-08-13、ChatGPT Work Mode上の同一会話で `/jucho-kun` → `/エスキスクン` の連続起動を完了し、スキル連携テストは `PASS`。ただし、最新の都市計画GIS・ハザードマップの地点別確認と、所管窓口・有資格者による最終確認は未実施のため、Case 001全体は引き続き `PARTIAL`。詳しくは[実機連携テスト記録](../../LIVE_WORKFLOW_TEST_20260813.md)を参照。
 
 ## 概要
 
@@ -38,7 +38,7 @@
 
 ## Status
 
-`PARTIAL` — A procedure-level run was completed on 2026-08-13. Sequential invocation through the ChatGPT plugin UI and current parcel-level GIS verification remain outstanding.
+`PARTIAL` — On 2026-08-13, `/jucho-kun` and `/エスキスクン` were invoked sequentially within the same ChatGPT Work Mode conversation, and the skill-workflow test is `PASS`. Case 001 as a whole remains `PARTIAL`, because current parcel-level urban-planning GIS and hazard-map verification, and confirmation by the competent office and licensed professionals, are still outstanding. See the [Live Workflow Test Record](../../LIVE_WORKFLOW_TEST_20260813.md) for details.
 
 ## Overview
 
