@@ -6,7 +6,7 @@
 
 ## 状態
 
-`NOT RUN`
+最新実行: `PARTIAL`（2026-08-13）。詳細は [RESULTS.md](RESULTS.md) を参照。
 
 ## 目的
 
@@ -52,7 +52,7 @@
 
 ## Status
 
-`NOT RUN`
+Latest run: `PARTIAL` (2026-08-13). See [RESULTS.md](RESULTS.md).
 
 ## Purpose
 

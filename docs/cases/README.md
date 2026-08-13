@@ -10,7 +10,7 @@
 
 | ケース | 状態 | メモ |
 |---|---|---|
-| [001 千葉市新庁舎](001-chiba-city-hall/README.md) | NOT RUN | 公式URLのみ |
+| [001 千葉市新庁舎](001-chiba-city-hall/README.md) | PARTIAL | 公開スキル手順による一次実行。公式URLのみ |
 
 ## English
 
@@ -20,4 +20,4 @@ This directory records link-only case studies using public documents. Official P
 
 | Case | Status | Notes |
 |---|---|---|
-| [001 Chiba City Hall](001-chiba-city-hall/README.md) | NOT RUN | Official URLs only |
+| [001 Chiba City Hall](001-chiba-city-hall/README.md) | PARTIAL | Procedure-level run; official URLs only |

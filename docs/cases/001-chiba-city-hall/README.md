@@ -6,11 +6,11 @@
 
 ## 状態
 
-`NOT RUN`
+`PARTIAL` — 2026-08-13に公開スキル手順による一次実行を完了。ChatGPTプラグインUIでの連続起動と、最新GISの地点判定は未実施。
 
 ## 概要
 
-千葉市が公開している新庁舎整備の基本設計資料を、エスキスクン v0.2 の実案件Smoke Test候補として扱う。資料はlink-onlyで参照し、PDFや画像をリポジトリへ保存しない。
+千葉市が公開している新庁舎整備の基本設計資料を使い、重調クンによる行政情報整理とエスキスクン v0.2による図面レビューを分離して実行した。資料はlink-onlyで参照し、PDFや画像をリポジトリへ保存しない。実行内容と未確認事項は[結果](RESULTS.md)に記録している。
 
 ## 公式資料
 
@@ -38,11 +38,11 @@
 
 ## Status
 
-`NOT RUN`
+`PARTIAL` — A procedure-level run was completed on 2026-08-13. Sequential invocation through the ChatGPT plugin UI and current parcel-level GIS verification remain outstanding.
 
 ## Overview
 
-This case uses Chiba City's public basic-design materials as a candidate real-world smoke test for Esquisse-kun v0.2. It is link-only: PDFs and images are not stored in this repository.
+This case uses Chiba City's public basic-design materials to separate administrative research under the Jucho-kun procedure from drawing review under Esquisse-kun v0.2. It remains link-only: PDFs and images are not stored in this repository. The run and its unresolved checks are recorded in [Results](RESULTS.md).
 
 ## Official Sources
 
