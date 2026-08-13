@@ -3,16 +3,14 @@
 [日本語](#日本語) | [English](#english)
 
 ![Version](https://img.shields.io/badge/version-v0.2%20alpha.2-blue)
-![Tests](https://img.shields.io/badge/tests-16%20passed-brightgreen)
-![Live workflow](https://img.shields.io/badge/live%20workflow-passed-brightgreen)
-![Case 001](https://img.shields.io/badge/case%20001-partial-yellow)
+[![CI](https://github.com/signal-yield/esquisse-kun/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/signal-yield/esquisse-kun/actions/workflows/ci.yml)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 ## 日本語
 
 **図面を勝手に補完しない、建築設計の一次レビュー用AIプラグイン。**
 
-エスキスクンは、建築設計案の条件、図面、空間構成、動線、光、視線、断面、建築法規の見落とし候補を、ホワイトボックスに整理するskills-only pluginです。読めない値を作らず、明示値・読取値・推定値・不明値を分けて扱います。
+エスキスクンは、建築設計案の条件、図面、空間構成、動線、光、視線、断面、建築法規の見落とし候補を、根拠と不明点を追跡できる形で整理するskills-only pluginです。読めない値を作らず、明示値・読取値・推定値・不明値を分けて扱います。
 
 ### ステータス
 
@@ -25,9 +23,9 @@
 
 | 検証範囲 | 状態 | 意味 |
 |---|---|---|
-| 自動・スモークテスト | 16 passed | 既存テスト関数の結果 |
-| ChatGPT実機連携 | PASS | 重調クン→エスキスクンの連続起動 |
-| Case 001 | PARTIAL | GIS・ハザード・所管確認が未完了 |
+| 自動・スモークテスト | [GitHub Actions](https://github.com/signal-yield/esquisse-kun/actions/workflows/ci.yml) | push・Pull Requestごとにpytestとスキル同期を確認 |
+| ChatGPT実機連携 | PASS（2026-08-13） | [実機テスト記録](docs/LIVE_WORKFLOW_TEST_20260813.md)へのリンク |
+| Case 001 | PARTIAL（2026-08-13） | GIS・ハザード・所管確認が未完了 |
 
 Case 001 は現在 PARTIAL です。GIS・ハザード・所管確認を手伝ってくださる方を探しています。
 → [help wanted な Issue 一覧](https://github.com/signal-yield/esquisse-kun/labels/help%20wanted)
@@ -192,7 +190,7 @@ MIT
 
 ## English
 
-**A white-box AI plugin for preliminary architectural design review—without inventing missing drawing information.**
+**An evidence-traceable AI plugin for preliminary architectural design review—without inventing missing drawing information.**
 
 Esquisse-kun is a skills-only plugin for early architectural design review. It organizes design requirements, drawings, spatial planning, circulation, light, sightlines, sections, and first-pass building-code screening while keeping the evidence visible.
 
@@ -207,9 +205,9 @@ Verification scope and status:
 
 | Verification scope | Status | Meaning |
 |---|---|---|
-| Automated smoke tests | 16 passed | Result of the existing test functions |
-| ChatGPT live workflow | PASS | Sequential invocation of Jucho-kun then Esquisse-kun |
-| Case 001 | PARTIAL | Current GIS, hazard, and competent-office checks remain outstanding |
+| Automated smoke tests | [GitHub Actions](https://github.com/signal-yield/esquisse-kun/actions/workflows/ci.yml) | Runs pytest and skill synchronization on every push and pull request |
+| ChatGPT live workflow | PASS (2026-08-13) | Link to the [live workflow test record](docs/LIVE_WORKFLOW_TEST_20260813.md) |
+| Case 001 | PARTIAL (2026-08-13) | Current GIS, hazard, and competent-office checks remain outstanding |
 
 Case 001 is currently PARTIAL. We are looking for help with GIS, hazard-map, and competent-office verification.
 → [Issues labeled help wanted](https://github.com/signal-yield/esquisse-kun/labels/help%20wanted)

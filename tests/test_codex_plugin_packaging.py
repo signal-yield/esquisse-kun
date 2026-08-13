@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import struct
 import subprocess
 import sys
@@ -238,6 +239,47 @@ def test_runtime_audience_neutrality_instruction() -> None:
         assert phrase in text
     for neutral in ["次回の検討", "次の設計検討", "レビュー時の主要論点", "案の説明例"]:
         assert neutral in text
+
+
+def test_no_white_box_terminology() -> None:
+    forbidden_pattern = re.compile(
+        "|".join(
+            [
+                "白" + "箱",
+                "ホワイト" + r"[\s\-]*" + "ボックス",
+                "white" + r"[\s\-]*" + "box",
+            ]
+        ),
+        re.IGNORECASE,
+    )
+
+    text_suffixes = {".md", ".html", ".htm", ".json", ".yml", ".yaml", ".py", ".txt", ""}
+    binary_suffixes = {".pdf", ".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".zip", ".xlsx"}
+
+    tracked = subprocess.run(
+        ["git", "ls-files"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    ).stdout.splitlines()
+
+    hits = []
+    for rel_path in tracked:
+        suffix = Path(rel_path).suffix.lower()
+        if suffix in binary_suffixes or suffix not in text_suffixes:
+            continue
+        full = ROOT / rel_path
+        if not full.is_file():
+            continue
+        try:
+            content = full.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        for match in forbidden_pattern.finditer(content):
+            hits.append(f"{rel_path}: {match.group(0)!r}")
+
+    assert not hits, "prohibited terminology found:\n" + "\n".join(hits)
 
 
 def test_audience_neutral_fixture_documents_context_boundary() -> None:
