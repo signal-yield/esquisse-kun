@@ -29,6 +29,9 @@
 | ChatGPT実機連携 | PASS | 重調クン→エスキスクンの連続起動 |
 | Case 001 | PARTIAL | GIS・ハザード・所管確認が未完了 |
 
+Case 001 は現在 PARTIAL です。GIS・ハザード・所管確認を手伝ってくださる方を探しています。
+→ [help wanted な Issue 一覧](https://github.com/signal-yield/esquisse-kun/labels/help%20wanted)
+
 いずれのバッジ・ステータスも、機能が所定の安全ルールに従って動いたことを示すものであり、現在の法規適合性・安全性の確認を意味しません。
 
 ### できること
@@ -207,6 +210,9 @@ Verification scope and status:
 | Automated smoke tests | 16 passed | Result of the existing test functions |
 | ChatGPT live workflow | PASS | Sequential invocation of Jucho-kun then Esquisse-kun |
 | Case 001 | PARTIAL | Current GIS, hazard, and competent-office checks remain outstanding |
+
+Case 001 is currently PARTIAL. We are looking for help with GIS, hazard-map, and competent-office verification.
+→ [Issues labeled help wanted](https://github.com/signal-yield/esquisse-kun/labels/help%20wanted)
 
 Every badge and status here indicates that a feature operated according to its defined safety rules. None of them indicate current legal compliance or safety.
 
