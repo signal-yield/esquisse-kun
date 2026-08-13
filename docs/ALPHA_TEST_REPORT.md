@@ -4,13 +4,13 @@ Date: 2026-08-12
 
 ## Scope
 
-v0.1 Alpha smoke test only. The goal is not numerical accuracy measurement; it is to verify that the skill starts from architecture-student drawing review requests, does not invent unreadable values, limits major criticism, gives concrete next actions, and avoids legal overclaiming.
+v0.1 Alpha smoke test only. The goal is not numerical accuracy measurement; it is to verify that the skill starts from architectural drawing review requests, does not invent unreadable values, limits major criticism, gives concrete next actions, and avoids legal overclaiming.
 
 ## Results
 
 | Case | Success | Problems | Misread | Dangerous Legal Assertion | Improvement |
 |---|---:|---|---|---|---|
-| T1 Detached House | Pass | Requires host vision/PDF support for actual drawing reading | None in fixture metadata | None | Add real student drawing after monitor consent |
+| T1 Detached House | Pass | Requires host vision/PDF support for actual drawing reading | None in fixture metadata | None | Add real project drawing after monitor consent |
 | T2 Courtyard House | Pass | Courtyard light/sequence depends on image readability | None in fixture metadata | None | Add section if available |
 | T3 Small Apartment | Pass | Evacuation review remains high-level | None in fixture metadata | None | Add stair dimensions and corridor widths |
 | T4 Small Public Building | Pass | Accessibility is outside v0.1 formal scope | None in fixture metadata | None | Add entry levels and sanitary layout |

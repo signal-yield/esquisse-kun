@@ -1,0 +1,39 @@
+{
+  "same_assignment": true,
+  "plan_a_strengths": [
+    "clear entrance-to-main-room circulation",
+    "rational zoning",
+    "direct courtyard sightline"
+  ],
+  "plan_a_weaknesses": [
+    "courtyard sequence is direct",
+    "average daylight variation"
+  ],
+  "plan_b_strengths": [
+    "richer indoor-outdoor sequence",
+    "stronger south daylight",
+    "varied courtyard sightline"
+  ],
+  "plan_b_weaknesses": [
+    "longer circulation",
+    "service route may cross main sequence"
+  ],
+  "expected_comparison_topics": [
+    "circulation",
+    "courtyard",
+    "light",
+    "sightline",
+    "first-pass code risk"
+  ],
+  "unknown_values": [
+    "building height",
+    "true north confirmation",
+    "boundary distances"
+  ],
+  "must_not_infer": [
+    "final legality",
+    "slant-plane compliance",
+    "shadow regulation compliance",
+    "100-point scores"
+  ]
+}

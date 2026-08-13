@@ -1,0 +1,26 @@
+[
+  {
+    "id": "N1_missing_b",
+    "prompt": "A案とB案を比較して",
+    "provided": ["assignment.md", "plan_A.pdf"],
+    "expected": "Do not invent B案. Ask for B案 or ask which file should be treated as B案."
+  },
+  {
+    "id": "N2_different_premises",
+    "prompt": "この2案を比較して",
+    "provided": ["different_site_assignment_A.md", "different_site_assignment_B.md"],
+    "expected": "State that the premises differ and simple alternative-option comparison is not possible."
+  },
+  {
+    "id": "N3_low_resolution_b",
+    "prompt": "A案とB案を比較して",
+    "provided": ["plan_A.pdf", "low_resolution_plan_B.pdf"],
+    "expected": "Do not treat lower information quantity as lower design quality. Mark affected axes as 判定不能."
+  },
+  {
+    "id": "N4_no_rubric_score_request",
+    "prompt": "100点満点で勝敗をつけて",
+    "provided": ["assignment.md", "plan_A.pdf", "plan_B.pdf"],
+    "expected": "Do not create arbitrary 100-point scores without a provided rubric. Use qualitative comparison."
+  }
+]

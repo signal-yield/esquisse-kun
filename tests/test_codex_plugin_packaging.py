@@ -21,7 +21,7 @@ def load_json(path: Path) -> dict:
 def test_manifest_and_skill_package() -> None:
     manifest = load_json(MANIFEST)
     assert manifest["name"] == "esquisse-kun"
-    assert manifest["version"] == "0.1.0-alpha.1"
+    assert manifest["version"] == "0.2.0-alpha.2"
     assert manifest["skills"] == "./skills/"
     assert manifest["license"] == "MIT"
     assert manifest["repository"] == "https://github.com/signal-yield/esquisse-kun"
@@ -80,6 +80,12 @@ def test_fixtures_exist() -> None:
         truth = load_json(base / "ground_truth.json")
         assert "room_names" in truth
         assert "deliberately_unknown_fields" in truth
+    compare = ROOT / "tests" / "fixtures" / "T6_compare"
+    for name in ("assignment.md", "plan_A.pdf", "plan_B.pdf", "ground_truth.json"):
+        assert (compare / name).is_file()
+    truth = load_json(compare / "ground_truth.json")
+    assert truth["same_assignment"] is True
+    assert "100-point scores" in truth["must_not_infer"]
 
 
 def test_guardrails_visible() -> None:
@@ -94,6 +100,10 @@ def test_guardrails_visible() -> None:
         "日影規制",
         "適法",
         "次に直す3点",
+        "A/B案比較モード",
+        "A案 / B案 エスキス比較",
+        "まだ決めない",
+        "100点満点の自動採点は禁止",
     ]
     for phrase in required:
         assert phrase in text
@@ -104,3 +114,137 @@ def test_submission_materials() -> None:
     assert text.count("### Positive Test ") == 5
     assert text.count("### Negative Test ") == 3
     assert "Submit Stop Point" in text
+
+
+def test_ab_compare_negative_cases_documented() -> None:
+    path = ROOT / "tests" / "fixtures" / "T6_compare" / "negative_cases.json"
+    cases = json.loads(path.read_text(encoding="utf-8"))
+    assert len(cases) >= 4
+    expected_ids = {
+        "N1_missing_b",
+        "N2_different_premises",
+        "N3_low_resolution_b",
+        "N4_no_rubric_score_request",
+    }
+    assert expected_ids.issubset({case["id"] for case in cases})
+    text = "\n".join(case["expected"] for case in cases)
+    for phrase in ["Do not invent", "premises differ", "lower information quantity", "100-point scores"]:
+        assert phrase in text
+
+
+def test_missing_information_navigator_guardrails() -> None:
+    text = PACKAGED_SKILL.read_text(encoding="utf-8")
+    required = [
+        "不足情報ナビ",
+        "次に必要な情報・図面",
+        "追加後に分かること",
+        "最大3件",
+        "必須",
+        "あると精度が上がる",
+        "資料不足を設計品質の低さとして扱わない",
+        "推定値や読めない値を補完して計算しない",
+    ]
+    for phrase in required:
+        assert phrase in text
+
+
+def test_curated_architect_cards_exist_and_are_structured() -> None:
+    architects = {
+        "vincent-van-duysen.md": ["Spatial Clarity", "Selective Openness"],
+        "peter-zumthor.md": ["Atmosphere", "Material Presence", "Choreographed Thresholds"],
+        "louis-kahn.md": ["Served And Servant", "Order", "Structure"],
+        "tadao-ando.md": ["Geometry", "Wall As Spatial Device", "Nature"],
+        "kenzo-tange.md": ["Urban Scale", "Structural Expression", "Civic Space"],
+    }
+    base = PLUGIN / "skills" / "esquisse-kun" / "references" / "architects"
+    for filename, distinctive_terms in architects.items():
+        text = (base / filename).read_text(encoding="utf-8")
+        assert "Sources checked:" in text
+        assert "Checked on 2026-08-12" in text
+        assert text.count("## Principle:") >= 4
+        for heading in ["### Observation", "### Design question", "### Drawing check", "### Possible operation", "### Sources"]:
+            assert heading in text
+        for term in distinctive_terms:
+            assert term in text
+        for forbidden in ["ならこう設計する", "ならこの案を選ぶ", "風に重厚", "木を使う", "ベージュにする"]:
+            assert forbidden not in text
+
+
+def test_reference_architect_mode_triggers_and_integrations() -> None:
+    text = PACKAGED_SKILL.read_text(encoding="utf-8")
+    for trigger in [
+        "Vincent Van Duysen",
+        "Peter Zumthor",
+        "Louis Kahn",
+        "Tadao Ando",
+        "安藤忠雄",
+        "Kenzo Tange",
+        "丹下健三",
+    ]:
+        assert trigger in text
+    for filename in [
+        "vincent-van-duysen.md",
+        "peter-zumthor.md",
+        "louis-kahn.md",
+        "tadao-ando.md",
+        "kenzo-tange.md",
+    ]:
+        assert filename in text
+    for required in [
+        "最大3件",
+        "Reference Architectの評価だけで最終推奨を決めない",
+        "次に必要な情報・図面",
+        "差別化の目安",
+    ]:
+        assert required in text
+
+
+def test_t7_missing_info_fixtures_exist() -> None:
+    base = ROOT / "tests" / "fixtures" / "T7_missing_info"
+    truth = load_json(base / "ground_truth.json")
+    assert truth["max_basic_missing_items"] == 3
+    for phrase in ["必須", "追加後に分かること", "次に必要な情報・図面"]:
+        assert phrase in truth["required_phrases"]
+    for case in ("T7_1_single", "T7_2_code", "T7_3_ab"):
+        assert (base / case / "assignment.md").is_file()
+        assert (base / case / "plan.pdf").is_file()
+    assert "B案の中庭・LDK・個室を横断する断面図" in truth["patterns"]["T7_3_ab"]["expected_nav"]
+
+
+def test_no_product_audience_limiting_wording() -> None:
+    checked_paths = [
+        ROOT / "README.md",
+        ROOT / "docs" / "DEMO_0817.md",
+        ROOT / "docs" / "index.html",
+        MANIFEST,
+    ]
+    text = "\n".join(path.read_text(encoding="utf-8") for path in checked_paths)
+    forbidden = ["学" + "生", "stu" + "dent", "stu" + "dents"]
+    for phrase in forbidden:
+        assert phrase.lower() not in text.lower()
+
+
+def test_runtime_audience_neutrality_instruction() -> None:
+    text = PACKAGED_SKILL.read_text(encoding="utf-8")
+    required = [
+        "Audience and context neutrality",
+        "利用場面が明示されていない場合",
+        "勝手に前提にしない",
+        "時間条件が与えられていない場合",
+        "明示されたユーザー文脈は尊重",
+        "明示されていない文脈は生成しない",
+    ]
+    for phrase in required:
+        assert phrase in text
+    for neutral in ["次回の検討", "次の設計検討", "レビュー時の主要論点", "案の説明例"]:
+        assert neutral in text
+
+
+def test_audience_neutral_fixture_documents_context_boundary() -> None:
+    path = ROOT / "tests" / "fixtures" / "T8_audience_neutral" / "ground_truth.json"
+    truth = load_json(path)
+    assert "先" + "生" in truth["neutral_context_must_not_introduce"]
+    assert "明" + "日" in truth["neutral_context_must_not_introduce"]
+    assert "今" + "夜" in truth["neutral_context_must_not_introduce"]
+    assert "大" + "学の設計課題です" in truth["explicit_context_prompt"]
+    assert "先" + "生" in truth["explicit_context_allowed"]
