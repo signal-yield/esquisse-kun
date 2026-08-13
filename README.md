@@ -18,8 +18,8 @@
 
 | Branch | Status |
 |---|---|
-| `main` | approved v0.1 |
-| `develop/v0.2` | release candidate `0.2.0-alpha.2` |
+| `main` | public alpha `0.2.0-alpha.2` |
+| `develop/v0.2` | merged into `main` |
 
 検証範囲ごとの状態は次のとおりです。
 
@@ -197,8 +197,8 @@ Esquisse-kun is a skills-only plugin for early architectural design review. It o
 
 | Branch | Status |
 |---|---|
-| `main` | approved v0.1 |
-| `develop/v0.2` | release candidate `0.2.0-alpha.2` |
+| `main` | public alpha `0.2.0-alpha.2` |
+| `develop/v0.2` | merged into `main` |
 
 Verification scope and status:
 
